@@ -1,5 +1,6 @@
-[
-  {
+{
+  "guests": [
+    {
     "id": 1,
     "firstName": "Candy",
     "lastName": "Pace",
@@ -60,3 +61,4 @@
     }
   }
 ]
+}

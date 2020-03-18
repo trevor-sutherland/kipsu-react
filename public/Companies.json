@@ -1,4 +1,5 @@
-[
+{
+  "companies": [
   {
     "id": 1,
     "company": "Hotel California",
@@ -30,3 +31,4 @@
     "timezone": "US/Eastern"
   }
 ]
+}

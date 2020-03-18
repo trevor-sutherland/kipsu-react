@@ -17,7 +17,7 @@
 }
 
 #message {
-  background-color: white;
+  padding-top: 2.5em;
 }
 #messageArea {
   min-height: 100vh;
