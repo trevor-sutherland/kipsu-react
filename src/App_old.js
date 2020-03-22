@@ -105,7 +105,7 @@ class App extends Component {
             <div className="col-8" id="message">
                 <label className="form-label">Message will display below</label>
                 <Card>
-                  <MessageCard messages={this.state.messages} messageType={this.state.messageType} value={this.state.value} className="col-8"/>
+                  <MessageCard value={this.state.value} className="col-8"/>
                 </Card>
             </div>
           </div>

@@ -1,0 +1,26 @@
+[
+  {
+    "id": 2,
+    "title": "Welcome!",
+    "beginning": ", and welcome to ",
+    "closing": ". Enjoy your stay, and let us know if you need anything."
+  },
+  {
+    "id": 3,
+    "title": "Room has been cleaned.",
+    "beginning": ", was finished being cleaned at ",
+    "closing": "Let us know if you need anything else!"
+  },
+  {
+    "id": 4,
+    "title": "Room service",
+    "beginning": ", your room service is available 24/7.",
+    "closing": " Call anytime and we will bring it to your room."
+  },
+  {
+    "id": 5,
+    "title": "Room is ready!",
+    "beginning": "is now ready for you.",
+    "closing": " We hope you enjoy your stay and please let us know if you need anything."
+  }
+]
