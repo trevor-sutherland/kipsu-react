@@ -17,11 +17,9 @@ class GuestSelect extends Component {
      
      axios.get(this.state.url)
       .then((response) => {
-        console.log(response.data);
         this.setState({
           data: response.data
       })
-        console.log(this.state.data);
       })
 
       .catch((error) =>console.log(error));
@@ -31,8 +29,8 @@ class GuestSelect extends Component {
   renderItems() {
 
     return this.state.data.map((item) => (
-      <option key={item.id} value={item.reservation.roomNumber}>
-      {item.reservation.roomNumber}
+      <option key={item.id} value={item.id}>
+      {item.id}
       </option> 
       ));
     }

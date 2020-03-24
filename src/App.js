@@ -10,58 +10,206 @@ import { Card } from "react-bootstrap";
 
 class App extends Component {
   constructor(props) {
-    super(props);
-    this.state = {
-      isSelected: true,
-      company: "Select a Company",
-      room: "Select a Room.",
-      messageType: "Select a message type.",
+    super(props); 
+        this.state = {
+        messages: [     
+        {
+        "id": 0,
+        "title": "Welcome!",
+        "beginning": ", and welcome to the ",
+        "closing": ". Enjoy your stay, and let us know if you need anything."
+        },
+        {
+        "id": 1,
+        "title": "Room has been cleaned.",
+        "beginning": ", was finished being cleaned at ",
+        "closing": "Let us know if you need anything else!"
+        },
+        { 
+        "id": 2,
+        "title": "Room service",
+        "beginning": ", your room service is available 24/7.",
+        "closing": " Call anytime and we will bring it to your room."
+        },
+        { 
+        "id": 3,
+        "title": "Room is ready!",
+        "beginning": "is now ready for you.",
+        "closing": " We hope you enjoy your stay and please let us know if you need anything." 
+    }
+      ],
+      companyData: [
+        {
+          "id": 1,
+          "company": "Hotel California",
+          "city": "Santa Barbara",
+          "timezone": "US/Pacific"
+        },
+        {
+          "id": 2,
+          "company": "The Grand Budapest Hotel",
+          "city": "Republic of Zubrowka",
+          "timezone": "US/Central"
+        },
+        {
+          "id": 3,
+          "company": "The Heartbreak Hotel",
+          "city": "Graceland",
+          "timezone": "US/Central"
+        },
+        {
+          "id": 4,
+          "company": "The Prancing Pony",
+          "city": "Bree",
+          "timezone": "US/Central"
+        },
+        {
+          "id": 5,
+          "company": "The Fawlty Towers",
+          "city": "Torquay",
+          "timezone": "US/Eastern"
+        }
+      ],
+      guestData: [
+        {
+          "id": 1,
+          "firstName": "Candy",
+          "lastName": "Pace",
+          "reservation": {
+            "roomNumber": 529,
+            "startTimestamp": 1486654792,
+            "endTimestamp": 1486852373
+          }
+        },
+        {
+          "id": 2,
+          "firstName": "Morgan",
+          "lastName": "Porter",
+          "reservation": {
+            "roomNumber": 385,
+            "startTimestamp": 1486612719,
+            "endTimestamp": 1486694720
+          }
+        },
+        {
+          "id": 3,
+          "firstName": "Bridgett",
+          "lastName": "Richard",
+          "reservation": {
+            "roomNumber": 141,
+            "startTimestamp": 1486520344,
+            "endTimestamp": 1486769616
+          }
+        },
+        {
+          "id": 4,
+          "firstName": "Melisa",
+          "lastName": "Preston",
+          "reservation": {
+            "roomNumber": 417,
+            "startTimestamp": 1486614763,
+            "endTimestamp": 1486832543
+          }
+        },
+        {
+          "id": 5,
+          "firstName": "Latoya",
+          "lastName": "Herrera",
+          "reservation": {
+            "roomNumber": 194,
+            "startTimestamp": 1486605110,
+            "endTimestamp": 1486785126
+          }
+        },
+        {
+          "id": 6,
+          "firstName": "Hewitt",
+          "lastName": "Hopper",
+          "reservation": {
+            "roomNumber": 349,
+            "startTimestamp": 1486660637,
+            "endTimestamp": 1486788273
+          }
+        }
+      ],
+      handleData: [],
+      time: null,
+      hour: null,
+      minutes: null,
+      guestURL:'/Guests.json',
+      url: '/Message.json',
+      greeting:[],
+      selectValue: ["Select a company", "1", "Select a Message Type"],
+
     };
-    this.handleChangeCompany = this.handleChangeCompany.bind(this);
-    this.handleChangeRoom = this.handleChangeRoom.bind(this);
-    this.handleChangeMessageType = this.handleChangeMessageType.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+
+    this.handleChange = this.handleChange.bind(this);
+    this.getHour = this.getHour.bind(this);
+    this.getGreeting = this.getGreeting.bind(this);
   }  
+
   
-  handleChangeRoom (e) {
+  //Add zero like regular clock
+  addZero(i) {
+    if (i < 10){
+      i = "0" + i;
+    }
+    return i;
+   }
+  //Change to 12 hour clock
+  twelveHour(i) {
+    if (i > 12) {
+      i = i - 12;
+    }
+    return i;
+   }
+  getHour() {
+    const date = new Date();
+    const twentyFourHour = this.addZero(date.getHours());
+    const hour = this.twelveHour(twentyFourHour);
+    const minutes = this.addZero(date.getMinutes());
+    const time = hour + ":" + minutes;
 
+    this.setState({time});
+    this.setState({minutes});
+    this.setState({hour});
+    }
+
+  //Get greeting based on time of day.
+  getGreeting() {
+    let greeting;
+    if (this.state.hour >=12 && this.state.hour <= 17){
+      greeting = 'Good afternoon, ';
+    } else if (this.state.hour >=17){
+      greeting = 'Good evening, ';
+    } else {
+      greeting = 'Good morning, ';
+    }
+    return greeting
+  }
+
+  //Splices selectValue state based on selection.
+  handleChange (e, index) {
     const options = e.target.options;
-    const value = [];
-      for (var i = 0, l = options.length; i < l; i++) {
-        if (options[i].selected) {
-          value.push(options[i].value);
+    const selectValue = [...this.state.selectValue];
+      for (var i = 0, l = options.length; i < l; i++) {  
+        if (options[i].selected && selectValue.indexOf(options[i].value) === -1){
+          selectValue.splice(index, 1, options[i].value);
         }
       }
-      this.setState({room: value});
-  }
-    handleChangeCompany (e) {
 
-    const options = e.target.options;
-    const value = [];
-      for (var i = 0, l = options.length; i < l; i++) {
-        if (options[i].selected) {
-          value.push(options[i].value);
-        }
-      }
-      this.setState({company: value});
-  }
-    handleChangeMessageType (e) {
+    this.setState({selectValue});
 
-    const options = e.target.options;
-    const value = [];
-      for (var i = 0, l = options.length; i < l; i++) {
-        if (options[i].selected) {
-          value.push(options[i].value);
-        }
-      }
-      this.setState({messageType: value});
   }
 
-  handleSubmit(e) {
-    alert("you have chose : " + this.state.room + this.state.messageType + this.state.company);
+  componentDidMount(){
+    this.getHour();
+    this.getGreeting();
   }
 
-  render(){
+  render()  {
+    
+
     return (
       <div className="App">
         <header className="App-header">
@@ -73,40 +221,33 @@ class App extends Component {
 
           <div className="row center">
             <div className="col-4">
-            
+            <div className="form-group">
+            <form onSubmit={this.handleSubmit}>
+            <label  className="form-label">Choose Message Type</label>
+                <select className="form-control" id="formSelect" onChange={(e) => this.handleChange(e, 2)}> 
+                  <option defaultValue>Select a Type</option> 
+                  <MessageSelect />
+                </select>
+            </form>
+            </div>
             <div className="form-group">
             <label className="form-label">Choose Company</label>
-              <select multiple className="form-control"  id="formSelect" onChange={this.handleChangeCompany}>   
-                <option defaultValue>Select your company</option>
+              <select className="form-control"  id="formSelect" onChange={(e) => this.handleChange(e, 0)}>
+                <option defaultValue>Select a Company</option>
                 <CompanySelect />
               </select>  
             </div>
             <div className="form-group">
-            <label className="form-label">Choose Room</label>
-                <select multiple className="form-control"  id="formSelect" onChange={this.handleChangeRoom}> 
-                  <option defaultValue>Select a Room</option> 
+            <label className="form-label">Choose Guest ID</label>
+                <select className="form-control"  id="formSelect" onChange={(e) => this.handleChange(e, 1)}> 
+                  <option defaultValue>Select a Guest ID</option> 
                   <GuestSelect />
                 </select>
             </div>
-            <div className="form-group">
-            <form onSubmit={this.handleSubmit}>
-            <label  className="form-label">Choose Message Type</label>
-                <select className="form-control" id="formSelect" multiple onChange={this.handleChangeMessageType}> 
-                  <option defaultValue>Select a Type</option> 
-                  <MessageSelect />
-                </select>
-                <input type="submit" value="Submit" />
-            </form>
             </div>
-
-
-            </div>
-
-            <div className="col-8" id="message">
+                <div className="col-8" id="message">
                 <label className="form-label">Message will display below</label>
-                <Card>
-                  <MessageCard messages={this.state.messages} messageType={this.state.messageType} value={this.state.value} className="col-8"/>
-                </Card>
+                <MessageCard getGreeting={this.getGreeting} time={this.state.time} guestData={this.state.guestData} selectValue={this.state.selectValue} messages={this.state.messages} messageType={this.state.messageType} value={this.state.value} className="col-8"/>
             </div>
           </div>
         </div>

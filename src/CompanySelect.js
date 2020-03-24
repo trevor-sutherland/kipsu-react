@@ -17,11 +17,9 @@ class CompanySelect extends Component {
      
      axios.get(this.state.url)
       .then((response) => {
-        console.log(response.data);
         this.setState({
           data: response.data
       })
-        console.log(this.state.data);
       })
 
       .catch((error) =>console.log(error));

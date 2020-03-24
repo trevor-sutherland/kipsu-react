@@ -43,3 +43,6 @@
   background-color: white !important;
   color: #282c34 !important; 
 }
+.default-option {
+  font-style: italic !important;
+}
