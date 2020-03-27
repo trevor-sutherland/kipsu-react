@@ -15,47 +15,37 @@ class MessageCard extends Component {
       selectGuest: []
     };
     }
-  getGuest(){
-    let selectGuest;
-    if (typeof this.props.selectValue[1]  === "string"){
-        selectGuest = 'Select guest ID';
-        } else { 
-        selectGuest = this.props.selectValue[1] -1;
-        }
-    return selectGuest
-    this.setState({selectGuest: selectGuest})
-    console.log(this.state.selectGuest);
-  }
 
   render() {  
     if (this.props.selectValue[2] === this.props.messages[0].title){
       return (
         <Card>
-          <WelcomeMessage getGreeting={this.props.getGreeting} time={this.props.time} guestData={this.props.guestData} selectValue={this.props.selectValue} messages={this.props.messages} messageType={this.props.messageType} value={this.props.value} selectValue={this.props.selectValue} />
+
+          <WelcomeMessage getGreeting={this.props.getGreeting} guestSelected={this.props.guestSelected} time={this.props.time} guestData={this.props.guestData} selectValue={this.props.selectValue} messages={this.props.messages} messageType={this.props.messageType} value={this.props.value} />
         </Card>
       );
     } else if (this.props.selectValue[2] === this.props.messages[1].title){
         return (
           <Card>
-            <CleanedMessage getGreeting={this.props.getGreeting} time={this.props.time} guestData={this.props.guestData} selectValue={this.props.selectValue} messages={this.props.messages} messageType={this.props.messageType} value={this.props.value} selectValue={this.props.selectValue} />
+            <CleanedMessage getGreeting={this.props.getGreeting} guestSelected={this.props.guestSelected} time={this.props.time} guestData={this.props.guestData} selectValue={this.props.selectValue} messages={this.props.messages} messageType={this.props.messageType} value={this.props.value} />
           </Card>
         );
     } else if (this.props.selectValue[2] === this.props.messages[2].title){
         return (  
           <Card>
-            <ServiceMessage getGreeting={this.props.getGreeting} time={this.props.time} guestData={this.props.guestData} selectValue={this.props.selectValue} messages={this.props.messages} messageType={this.props.messageType} value={this.props.value} selectValue={this.props.selectValue} />
+            <ServiceMessage getGreeting={this.props.getGreeting} guestSelected={this.props.guestSelected} time={this.props.time} guestData={this.props.guestData} selectValue={this.props.selectValue} messages={this.props.messages} messageType={this.props.messageType} value={this.props.value} />
           </Card>
         );
     } else if (this.props.selectValue[2] === this.props.messages[3].title){
         return (       
           <Card>
-            <ReadyMessage getGreeting={this.props.getGreeting} time={this.props.time} guestData={this.props.guestData} selectValue={this.props.selectValue} messages={this.props.messages} messageType={this.props.messageType} value={this.props.value} selectValue={this.props.selectValue} />
+            <ReadyMessage getGreeting={this.props.getGreeting} guestSelected={this.props.guestSelected} time={this.props.time} guestData={this.props.guestData} selectValue={this.props.selectValue} messages={this.props.messages} messageType={this.props.messageType} value={this.props.value} />
           </Card>
         );
       } else {
           return (
           <Card>
-          <DefaultMessage getGreeting={this.props.getGreeting} time={this.props.time} guestData={this.props.guestData} selectValue={this.props.selectValue} messages={this.props.messages} messageType={this.props.messageType} value={this.props.value} selectValue={this.props.selectValue} />
+          <DefaultMessage getGreeting={this.props.getGreeting} guestSelected={this.props.guestSelected} time={this.props.time} guestData={this.props.guestData} selectValue={this.props.selectValue} messages={this.props.messages} messageType={this.props.messageType} value={this.props.value} />
           </Card>
           );  
     }     

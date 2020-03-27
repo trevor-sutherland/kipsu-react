@@ -9,26 +9,22 @@ class WelcomeMessage extends Component {
       	selectGuest: []
     };
     }
-
-    getGuest(){
-    let selectGuest;
-    if (typeof this.props.selectValue[1]  === "string"){
-        selectGuest = 'Select guest ID';
-        } else { 
-        selectGuest = this.props.selectValue[1] -1;
-        }
-    return selectGuest
-    this.setState({selectGuest: selectGuest})
-    console.log(this.state.selectGuest);
-  	}
+    
 	render(){
-		const guestSelect = this.props.selectValue[1] - 1;	
+		let firstName;
+		const selectValue = this.props.selectValue[1];
+		const guestSelected = this.props.guestSelected;
+		if (guestSelected === undefined || guestSelected.firstName === undefined){
+			firstName = selectValue;
+		} else {
+			firstName = guestSelected.firstName;
+		}	
 		return(
 			<Card.Body>
 		    <Card.Title>
 		    {this.props.selectValue[2]}
 		    </Card.Title>
-		    {this.props.getGreeting()}{this.props.guestData[guestSelect].firstName}{this.props.messages[0].beginning}{this.props.selectValue[0]}{this.props.messages[0].closing}
+		    {this.props.getGreeting()}{firstName}{this.props.messages[0].beginning}{this.props.selectValue[0]}{this.props.messages[0].closing}
 		    </Card.Body>
 		);
 }

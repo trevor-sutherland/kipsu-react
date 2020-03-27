@@ -8,14 +8,21 @@ class DefaultMessage extends Component {
     };
     }
     
-	render(){
-		const guestSelect = this.props.selectValue[1] - 1;	
+	render(){	
+		let firstName;
+		const selectValue = this.props.selectValue[1];
+		const guestSelected = this.props.guestSelected;
+		if (guestSelected === undefined || guestSelected.firstName === undefined){
+			firstName = selectValue;
+		} else {
+			firstName = guestSelected.firstName;
+		}
 		return(
 			<Card.Body>
 		    <Card.Title>
 		    {this.props.selectValue[2]}
 		    </Card.Title>
-		    {this.props.guestData[guestSelect].firstName} | {this.props.selectValue[2]} | {this.props.selectValue[0]}
+		    {firstName} | {this.props.selectValue[0]} | {this.props.selectValue[2]}
 		    </Card.Body>
 		);
 }

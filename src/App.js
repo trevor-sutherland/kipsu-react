@@ -6,7 +6,6 @@ import MessageSelect from './MessageSelect';
 import CompanySelect from './CompanySelect';
 import GuestSelect from './GuestSelect';
 import MessageCard from './MessageCard';
-import { Card } from "react-bootstrap";
 
 class App extends Component {
   constructor(props) {
@@ -28,14 +27,14 @@ class App extends Component {
         { 
         "id": 2,
         "title": "Room service",
-        "beginning": ", your room service is available 24/7.",
-        "closing": " Call anytime and we will bring it to your room."
+        "beginning": ", your room service is available 24/7 at the ",
+        "closing": ". Call anytime and we will bring it to your room."
         },
         { 
         "id": 3,
         "title": "Room is ready!",
-        "beginning": "is now ready for you.",
-        "closing": " We hope you enjoy your stay and please let us know if you need anything." 
+        "beginning": " your room #",
+        "closing": "is now ready for you. We hope you enjoy your stay and please let us know if you need anything." 
     }
       ],
       companyData: [
@@ -139,7 +138,8 @@ class App extends Component {
       guestURL:'/Guests.json',
       url: '/Message.json',
       greeting:[],
-      selectValue: ["Select a company", "1", "Select a Message Type"],
+      selectValue: ["Select a company", "Select a guest ID", "Select a Message Type"],
+      guestSelected: [],
 
     };
 
@@ -157,16 +157,15 @@ class App extends Component {
     return i;
    }
   //Change to 12 hour clock
-  twelveHour(i) {
+  /*twelveHour(i) {
     if (i > 12) {
       i = i - 12;
     }
     return i;
-   }
+   }*/
   getHour() {
     const date = new Date();
-    const twentyFourHour = this.addZero(date.getHours());
-    const hour = this.twelveHour(twentyFourHour);
+    const hour = this.addZero(date.getHours());
     const minutes = this.addZero(date.getMinutes());
     const time = hour + ":" + minutes;
 
@@ -174,6 +173,8 @@ class App extends Component {
     this.setState({minutes});
     this.setState({hour});
     }
+
+
 
   //Get greeting based on time of day.
   getGreeting() {
@@ -197,11 +198,18 @@ class App extends Component {
           selectValue.splice(index, 1, options[i].value);
         }
       }
+    this.setState({selectValue}, this.handleGuestState);  
+ 
+ };   
 
-    this.setState({selectValue});
 
+  handleGuestState = () => {
+    const selectedGuestID = parseInt (this.state.selectValue[1]);
+    const guestSelected = this.state.guestData.find(item=> item.id === selectedGuestID);
+    this.setState({
+      guestSelected: guestSelected
+    });
   }
-
   componentDidMount(){
     this.getHour();
     this.getGreeting();
@@ -224,8 +232,8 @@ class App extends Component {
             <div className="form-group">
             <form onSubmit={this.handleSubmit}>
             <label  className="form-label">Choose Message Type</label>
-                <select className="form-control" id="formSelect" onChange={(e) => this.handleChange(e, 2)}> 
-                  <option defaultValue>Select a Type</option> 
+                <select className="form-control" id="formSelect" onChange={(e) => this.handleChange(e, 2)}>  
+                  <option default>Select Message Type</option>
                   <MessageSelect />
                 </select>
             </form>
@@ -233,21 +241,21 @@ class App extends Component {
             <div className="form-group">
             <label className="form-label">Choose Company</label>
               <select className="form-control"  id="formSelect" onChange={(e) => this.handleChange(e, 0)}>
-                <option defaultValue>Select a Company</option>
+                <option default>Select a Company</option>
                 <CompanySelect />
               </select>  
             </div>
             <div className="form-group">
             <label className="form-label">Choose Guest ID</label>
                 <select className="form-control"  id="formSelect" onChange={(e) => this.handleChange(e, 1)}> 
-                  <option defaultValue>Select a Guest ID</option> 
+                  <option default>Select a guest ID</option>
                   <GuestSelect />
                 </select>
             </div>
             </div>
                 <div className="col-8" id="message">
                 <label className="form-label">Message will display below</label>
-                <MessageCard getGreeting={this.getGreeting} time={this.state.time} guestData={this.state.guestData} selectValue={this.state.selectValue} messages={this.state.messages} messageType={this.state.messageType} value={this.state.value} className="col-8"/>
+                <MessageCard getGreeting={this.getGreeting} time={this.state.time} guestSelected={this.state.guestSelected} guestData={this.state.guestData} selectValue={this.state.selectValue} messages={this.state.messages} messageType={this.state.messageType} value={this.state.value} className="col-8"/>
             </div>
           </div>
         </div>

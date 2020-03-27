@@ -19,15 +19,11 @@ class MessageSelect extends Component {
 
      axios.get(this.state.url)
       .then((response) => {
-        console.log(response.data);
         this.setState({
           messageData: response.data
       })
-        console.log(this.state.messageData);
       })
-
       .catch((error) =>console.log(error));
-
   }   
 
   renderItems() {
