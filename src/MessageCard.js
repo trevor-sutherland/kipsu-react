@@ -6,6 +6,7 @@ import CleanedMessage from './Messages/CleanedMessage';
 import ServiceMessage from './Messages/ServiceMessage';
 import ReadyMessage from './Messages/ReadyMessage';
 import DefaultMessage from './Messages/DefaultMessage';
+import CustomMessage from './Messages/CustomMessage';
 
 class MessageCard extends Component {
   constructor(props) {
@@ -20,7 +21,6 @@ class MessageCard extends Component {
     if (this.props.selectValue[2] === this.props.messages[0].title){
       return (
         <Card>
-
           <WelcomeMessage getGreeting={this.props.getGreeting} guestSelected={this.props.guestSelected} time={this.props.time} guestData={this.props.guestData} selectValue={this.props.selectValue} messages={this.props.messages} messageType={this.props.messageType} value={this.props.value} />
         </Card>
       );
@@ -42,6 +42,10 @@ class MessageCard extends Component {
             <ReadyMessage getGreeting={this.props.getGreeting} guestSelected={this.props.guestSelected} time={this.props.time} guestData={this.props.guestData} selectValue={this.props.selectValue} messages={this.props.messages} messageType={this.props.messageType} value={this.props.value} />
           </Card>
         );
+    } else if (this.props.selectValue[2] === this.props.messages[4].title){
+      return (       
+          <CustomMessage getGreeting={this.props.getGreeting} guestSelected={this.props.guestSelected} time={this.props.time} guestData={this.props.guestData} selectValue={this.props.selectValue} messages={this.props.messages} messageType={this.props.messageType} value={this.props.value} />
+        );    
       } else {
           return (
           <Card>

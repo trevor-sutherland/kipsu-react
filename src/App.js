@@ -35,7 +35,13 @@ class App extends Component {
         "title": "Room is ready!",
         "beginning": " your room #",
         "closing": "is now ready for you. We hope you enjoy your stay and please let us know if you need anything." 
-    }
+        },
+        {
+          "id": 4,
+          "title": "Custom Message.",
+          "beginning": "",
+          "closing": ""
+        }
       ],
       companyData: [
         {

@@ -46,3 +46,13 @@
 .default-option {
   font-style: italic !important;
 }
+
+.customMessage {
+  background-color: #fff;
+  background-clip: border-box;
+  border-radius: .25rem;
+}
+.customMessage h5{
+padding: 1.25rem;
+color: black;
+}

@@ -22,5 +22,11 @@
     "title": "Room is ready!",
     "beginning": "is now ready for you.",
     "closing": " We hope you enjoy your stay and please let us know if you need anything."
+  },
+  {
+    "id": 4,
+    "title": "Custom Message.",
+    "beginning": "",
+    "closing": ""
   }
 ]
