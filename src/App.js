@@ -146,7 +146,7 @@ class App extends Component {
       greeting:[],
       selectValue: ["Select a company", "Select a guest ID", "Select a Message Type"],
       guestSelected: [],
-
+      companySelected: []
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -205,7 +205,7 @@ class App extends Component {
         }
       }
     this.setState({selectValue}, this.handleGuestState);  
- 
+    this.setState({selectValue}, this.handleCompanyState);  
  };   
 
 
@@ -216,6 +216,16 @@ class App extends Component {
       guestSelected: guestSelected
     });
   }
+
+  handleCompanyState = () => {
+    const selectedCompany = (this.state.selectValue[0]);
+    const companySelected = this.state.companyData.find(item=> item.company === selectedCompany);
+    this.setState({
+      companySelected: companySelected
+    });
+    console.log(selectedCompany);
+  }
+
   componentDidMount(){
     this.getHour();
     this.getGreeting();
@@ -261,7 +271,7 @@ class App extends Component {
             </div>
                 <div className="col-8" id="message">
                 <label className="form-label">Message will display below</label>
-                <MessageCard getGreeting={this.getGreeting} time={this.state.time} guestSelected={this.state.guestSelected} guestData={this.state.guestData} selectValue={this.state.selectValue} messages={this.state.messages} messageType={this.state.messageType} value={this.state.value} className="col-8"/>
+                <MessageCard getGreeting={this.getGreeting} time={this.state.time} companySelected={this.state.companySelected} guestSelected={this.state.guestSelected} guestData={this.state.guestData} selectValue={this.state.selectValue} messages={this.state.messages} messageType={this.state.messageType} value={this.state.value} className="col-8"/>
             </div>
           </div>
         </div>

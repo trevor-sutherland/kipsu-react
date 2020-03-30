@@ -56,3 +56,10 @@
 padding: 1.25rem;
 color: black;
 }
+.card-title {
+  padding-top: 15px;
+}
+.clearButton {
+  background: maroon;
+  color: white;
+}
