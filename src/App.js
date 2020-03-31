@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-import logo from './logo.png';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 import MessageSelect from './Selectors/MessageSelect';
@@ -151,7 +150,7 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+          <h1>For Hiring Consideration</h1>
         </header>
 
         <div className="container" id="messageArea">

@@ -12,6 +12,10 @@ You can see the latest build at [https://trevor-sutherland.github.io/trevor-inte
 
 In the project directory, you can run:
 
+### `npm install`
+
+installs packages defined in package.json into node_modules
+
 ### `npm start`
 
 Runs the app in the development mode.<br />
@@ -37,3 +41,29 @@ Currently, the build folder deploys to [https://trevor-sutherland.github.io/trev
 
 
 See the section from Facebook about GitHub pages [deployment](https://create-react-app.dev/docs/deployment/#github-pages) for more information.
+
+## Process
+### Design
+
+I wanted to display a message based on user input. I thought dropdown forms for choosing guest, company, and message type would make it simple to generate meaningful messages.<br />
+
+In the beginning, I used roomNumber for the selector for guests thinking about room service or cleaning, but I ended up going with guest ID. I thought this might make more sense for a broader use.<br /> 
+
+I wasn't sure about custom message, but I thought it would be nice to just have buttons connected to the data. This way, a client could construct a message and input Guest and Company data quickly rather than having to look it up.
+
+### Language
+
+The browser interface is so portable and used by everyone, which is why I chose Javascript.<br />
+I built the app using Reactjs because I wanted the data to dynamically change and update based on user input.<br />
+
+### Correctness
+
+I used various bug tests using console.log(), React Developer Tools, and the create-react-app [built-in tests](https://create-react-app.dev/docs/running-tests).<br />
+
+Apart from that I used the npm start script to run the dev enviornment and constantly made sure my changes were running properly.
+
+### Styling
+
+I would like to have added dynamic styling based on Company or if the client still needed to choose a Guest, Company, or Message type.<br />
+
+It would also be cool to implement sending the message, but I thought that was beyond the scope. 
