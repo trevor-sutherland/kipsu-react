@@ -1,26 +1,25 @@
 {
   "files": {
     "main.css": "/trevor-interview-code-project/static/css/main.b2c419f0.chunk.css",
-    "main.js": "/trevor-interview-code-project/static/js/main.d8db55f8.chunk.js",
-    "main.js.map": "/trevor-interview-code-project/static/js/main.d8db55f8.chunk.js.map",
+    "main.js": "/trevor-interview-code-project/static/js/main.f4de0d4d.chunk.js",
+    "main.js.map": "/trevor-interview-code-project/static/js/main.f4de0d4d.chunk.js.map",
     "runtime-main.js": "/trevor-interview-code-project/static/js/runtime-main.e72f263a.js",
     "runtime-main.js.map": "/trevor-interview-code-project/static/js/runtime-main.e72f263a.js.map",
     "static/css/2.de424728.chunk.css": "/trevor-interview-code-project/static/css/2.de424728.chunk.css",
-    "static/js/2.761ce181.chunk.js": "/trevor-interview-code-project/static/js/2.761ce181.chunk.js",
-    "static/js/2.761ce181.chunk.js.map": "/trevor-interview-code-project/static/js/2.761ce181.chunk.js.map",
+    "static/js/2.45ba940d.chunk.js": "/trevor-interview-code-project/static/js/2.45ba940d.chunk.js",
+    "static/js/2.45ba940d.chunk.js.map": "/trevor-interview-code-project/static/js/2.45ba940d.chunk.js.map",
     "index.html": "/trevor-interview-code-project/index.html",
-    "precache-manifest.d60c52158177fbd352860784f7d7fcc8.js": "/trevor-interview-code-project/precache-manifest.d60c52158177fbd352860784f7d7fcc8.js",
+    "precache-manifest.8c064104cca530050d9d653b3dcb9453.js": "/trevor-interview-code-project/precache-manifest.8c064104cca530050d9d653b3dcb9453.js",
     "service-worker.js": "/trevor-interview-code-project/service-worker.js",
     "static/css/2.de424728.chunk.css.map": "/trevor-interview-code-project/static/css/2.de424728.chunk.css.map",
     "static/css/main.b2c419f0.chunk.css.map": "/trevor-interview-code-project/static/css/main.b2c419f0.chunk.css.map",
-    "static/js/2.761ce181.chunk.js.LICENSE.txt": "/trevor-interview-code-project/static/js/2.761ce181.chunk.js.LICENSE.txt",
-    "static/media/logo.png": "/trevor-interview-code-project/static/media/logo.e05d227e.png"
+    "static/js/2.45ba940d.chunk.js.LICENSE.txt": "/trevor-interview-code-project/static/js/2.45ba940d.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.e72f263a.js",
     "static/css/2.de424728.chunk.css",
-    "static/js/2.761ce181.chunk.js",
+    "static/js/2.45ba940d.chunk.js",
     "static/css/main.b2c419f0.chunk.css",
-    "static/js/main.d8db55f8.chunk.js"
+    "static/js/main.f4de0d4d.chunk.js"
   ]
 }
