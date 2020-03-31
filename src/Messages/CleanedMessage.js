@@ -9,12 +9,14 @@ class CleanedMessage extends Component {
     }
     
 	render(){
+
+		//Logic for which object to use based on if user chose from dropdown
+
+		const { messages, selectValue, guestSelected, time, getGreeting } = this.props
 		let firstName;
 		let roomNumber;
-		const selectValue = this.props.selectValue[1];
-		const guestSelected = this.props.guestSelected;
 		if (guestSelected === undefined || guestSelected.firstName === undefined){
-			firstName = selectValue;
+			firstName = selectValue[1];
 			roomNumber = selectValue;
 			
 		} else {
@@ -24,9 +26,9 @@ class CleanedMessage extends Component {
 		return(
 			<Card.Body>
 		    <Card.Title>
-		    {this.props.selectValue[2]}
+		    {selectValue[2]}
 		    </Card.Title>
-		    {this.props.getGreeting()}{firstName}, your room #{roomNumber}{this.props.messages[1].beginning} {this.props.time}. {this.props.messages[1].closing}
+		    {getGreeting()}{firstName}, your room #{roomNumber}{messages[1].beginning} {time}. {messages[1].closing}
 		    </Card.Body>
 		);
 }

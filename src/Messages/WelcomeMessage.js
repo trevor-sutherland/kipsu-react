@@ -11,11 +11,13 @@ class WelcomeMessage extends Component {
     }
     
 	render(){
+		
+		//Logic for which object to use based on if user chose from dropdown		
+		
+		const { messages, selectValue, guestSelected, getGreeting} = this.props
 		let firstName;
-		const selectValue = this.props.selectValue[1];
-		const guestSelected = this.props.guestSelected;
 		if (guestSelected === undefined || guestSelected.firstName === undefined){
-			firstName = selectValue;
+			firstName = selectValue[1];
 		} else {
 			firstName = guestSelected.firstName;
 		}	
@@ -24,7 +26,7 @@ class WelcomeMessage extends Component {
 		    <Card.Title>
 		    {this.props.selectValue[2]}
 		    </Card.Title>
-		    {this.props.getGreeting()}{firstName}{this.props.messages[0].beginning}{this.props.selectValue[0]}{this.props.messages[0].closing}
+		    {getGreeting()}{firstName}{messages[0].beginning}{selectValue[0]}{messages[0].closing}
 		    </Card.Body>
 		);
 }

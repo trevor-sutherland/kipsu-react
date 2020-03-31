@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { Form } from "react-bootstrap";
+
+//Renders custom message card
+
 class CustomMessage extends Component {
   constructor(props) {
     super(props);
@@ -17,26 +20,29 @@ class CustomMessage extends Component {
       this.handleChange = this.handleChange.bind(this);
       this.handleTitle = this.handleTitle.bind(this);
       this.changeTitle = this.changeTitle.bind(this);
-      this.handleSubmit = this.handleSubmit.bind(this);
+      this.handleMessage = this.handleMessage.bind(this);
       this.handleClear = this.handleClear.bind(this);
       this.handleFirstName = this.handleFirstName.bind(this);
       this.handleRoomNumber = this.handleRoomNumber.bind(this);
       this.handleCompanyName = this.handleCompanyName.bind(this);
       this.handleCity = this.handleCity.bind(this);
     }
-
+    
+    //All button object handlers
     handleChange(e){
       this.setState({
         [e.target.name]: e.target.value
       });
     }
 
+    //Change title 
     changeTitle(e){
       this.setState({
         [e.target.name]: e.target.value
       })
     }
 
+    //Set title 
     handleTitle(e){
       e.preventDefault();
       this.setState({
@@ -45,7 +51,8 @@ class CustomMessage extends Component {
       this.setState({customizeTitle: ""});
     }
 
-    handleSubmit(e){
+    //Set message
+    handleMessage(e){
       e.preventDefault();
       this.setState({
       customMessage: [...this.state.customMessage, this.state.customizeMessage, " "]
@@ -53,10 +60,12 @@ class CustomMessage extends Component {
       this.setState({customizeMessage: ""});
     }
 
+    //Clear
     handleClear(){
       this.setState({customMessage: ""});
     }
 
+    //Insert first name
     handleFirstName(){
     const { selectValue, guestSelected } = this.props;
     let firstName;
@@ -67,6 +76,8 @@ class CustomMessage extends Component {
     }
       this.setState({customMessage: [...this.state.customMessage, firstName, " "]});
     }
+    
+    //Insert room number
     handleRoomNumber(){
       const { selectValue, guestSelected } = this.props;
       let roomNumber;
@@ -78,11 +89,14 @@ class CustomMessage extends Component {
         this.setState({customMessage: [...this.state.customMessage, roomNumber, " "]});
       }
     
+    //Insert company name
     handleCompanyName(){
       this.setState({ customMessage: [...this.state.customMessage, this.props.selectValue[0], " "]});
     }
 
+    //Insert city
     handleCity(){
+      
       const { selectValue, companySelected } = this.props;
       let city;
       if (companySelected === undefined || companySelected.company === undefined){
@@ -94,6 +108,9 @@ class CustomMessage extends Component {
     }
 
   render() {  
+    
+    //Logic for which object to use based on if user chose from dropdown
+
     let message;
     if (this.state.customMessage[0] === undefined) {
       message = this.state.defaultMessage;
@@ -128,7 +145,7 @@ class CustomMessage extends Component {
             onChange={this.handleChange}
             />
           </Form>
-          <button value="Insert Text" onClick={this.handleSubmit}>Insert Text</button>
+          <button value="Insert Text" onClick={this.handleMessage}>Insert Text</button>
           <button value="Guest Name" onClick={this.handleFirstName}>Guest Name</button>
           <button value="Company Name" onClick={this.handleCompanyName}>Company Name</button>
           <button value="City" onClick={this.handleCity}>City</button>
